@@ -1,7 +1,7 @@
 class Sorter {
   constructor() {
     this.arr = [];
-	this.compareFunction = 0;
+	this.compareFunction = function(a,b){return a-b;};
   }
 
   add(element) {
@@ -21,7 +21,13 @@ class Sorter {
   }
 
   sort(indices) {
-    this.arr.sort(this.compareFunction);
+    //this.arr.sort(this.compareFunction);
+	let new_arr = [];
+	indices.forEach(function(item,i,ar){
+		new_arr.push(this.arr[item]);
+	}.bind(this));
+	new_arr.sort(this.compareFunction);
+	return indices.forEach(function(item,i,ar){this.arr[item] = new_arr[i];}.bind(this));
   }
 
   setComparator(compareFunction) {
