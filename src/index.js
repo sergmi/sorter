@@ -21,7 +21,8 @@ class Sorter {
   }
 
   sort(indices) {
-    //this.arr.sort(this.compareFunction);
+	if(indices[0]>indices[1]){indices.reverse();}
+  
 	let new_arr = [];
 	indices.forEach(function(item,i,ar){
 		new_arr.push(this.arr[item]);
